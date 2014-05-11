@@ -1,0 +1,36 @@
+DEST=/opt/stack
+
+# Logging
+LOGFILE=$DEST/logs/stack.sh.log
+VERBOSE=True
+LOG_COLOR=False
+SCREEN_LOGDIR=$DEST/logs/screen
+OFFLINE=true
+
+# Credentials
+ADMIN_PASSWORD=openstack
+MYSQL_PASSWORD=openstack
+RABBIT_PASSWORD=openstack
+SERVICE_PASSWORD=openstack
+SERVICE_TOKEN=tokentoken
+
+# Host detail
+#EDITME
+HOST_IP=192.168.56.108
+#EDITME
+SERVICE_HOST=192.168.56.109
+Q_HOST=$SERVICE_HOST
+
+# Github's Branch
+GLANCE_BRANCH=stable/icehouse
+HORIZON_BRANCH=stable/icehouse
+KEYSTONE_BRANCH=stable/icehouse
+NOVA_BRANCH=stable/icehouse
+NEUTRON_BRANCH=stable/icehouse
+HEAT_BRANCH=stable/icehouse
+CEILOMETER_BRANCH=stable/icehouse
+
+# Services
+disable_all_services
+ENABLED_SERVICES=neutron,n-cpu,rabbit,q-api,q-agt
+
