@@ -1,0 +1,43 @@
+DEST=/opt/stack
+
+# Logging
+LOGFILE=$DEST/logs/stack.sh.log
+VERBOSE=True
+LOG_COLOR=False
+SCREEN_LOGDIR=$DEST/logs/screen
+OFFLINE=true
+
+# Credentials
+ADMIN_PASSWORD=openstack
+MYSQL_PASSWORD=openstack
+RABBIT_PASSWORD=openstack
+SERVICE_PASSWORD=openstack
+SERVICE_TOKEN=tokentoken
+
+# Host detail
+#EDITME
+HOST_IP=192.168.56.102
+#EDITME
+SERVICE_HOST=192.168.56.101
+Q_HOST=$SERVICE_HOST
+
+# Github's Branch
+GLANCE_BRANCH=stable/icehouse
+HORIZON_BRANCH=stable/icehouse
+KEYSTONE_BRANCH=stable/icehouse
+NOVA_BRANCH=stable/icehouse
+NEUTRON_BRANCH=stable/icehouse
+HEAT_BRANCH=stable/icehouse
+CEILOMETER_BRANCH=stable/icehouse
+
+# Services
+disable_all_services
+ENABLED_SERVICES=neutron,n-cpu,rabbit,q-api,q-agt
+
+#plugin
+Q_PLUGIN=ml2
+Q_AGENT=openvswitch
+Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,linuxbridge,l2population
+Q_ML2_TENANT_NETWORK_TYPE=gre
+Q_AGENT_EXTRA_AGENT_OPTS=(tunnel_types=gre)
+Q_AGENT_EXTRA_SRV_OPTS=(local_ip=$HOST_IP)
