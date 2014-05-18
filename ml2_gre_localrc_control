@@ -36,11 +36,14 @@ enable_service q-l3
 enable_service q-meta
 enable_service neutron
 
-#Plugin
+#ml2 Plugin
 Q_PLUGIN=ml2
-ENABLE_TENANT_VLANS=True
 Q_AGENT=openvswitch
-Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,linuxbridge
+Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,linuxbridge,l2population
+Q_ML2_TENANT_NETWORK_TYPE=gre
+#Q_USE_SECGROUP=True
+#Q_AGENT_EXTRA_AGENT_OPTS=(tunnel_types=gre)
+#Q_AGENT_EXTRA_SRV_OPTS=(local_ip=$HOST_IP)
 
 # Heat - Orchestration Service
 ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
