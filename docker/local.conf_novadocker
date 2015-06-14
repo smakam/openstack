@@ -1,0 +1,45 @@
+[[local|localrc]]
+# HOST
+#EDITME
+HOST_IP=192.168.56.101
+
+ADMIN_PASSWORD=openstack
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+SERVICE_TOKEN=super-secret-admin-token
+VIRT_DRIVER=novadocker.virt.docker.DockerDriver
+
+# Logging
+VERBOSE=True
+DEST=$HOME/stack
+SCREEN_LOGDIR=$DEST/logs/screen
+SERVICE_DIR=$DEST/status
+DATA_DIR=$DEST/data
+LOGFILE=$DEST/logs/stack.sh.log
+LOGDIR=$DEST/logs
+OFFLINE=false
+
+# Networking
+FIXED_RANGE=10.0.0.0/24
+
+# This enables Neutron
+disable_service n-net
+enable_service q-svc
+enable_service q-agt
+enable_service q-dhcp
+enable_service q-l3
+enable_service q-meta
+
+# Heat
+#enable_service heat h-api h-api-cfn h-api-cw h-eng
+
+# Introduce glance to docker images
+[[post-config|$GLANCE_API_CONF]]
+[DEFAULT]
+container_formats=ami,ari,aki,bare,ovf,ova,docker
+
+# Configure nova to use the nova-docker driver
+[[post-config|$NOVA_CONF]]
+[DEFAULT]
+compute_driver=novadocker.virt.docker.DockerDriver
