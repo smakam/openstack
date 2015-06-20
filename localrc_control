@@ -3,7 +3,7 @@ DEST=/opt/stack
 # Logging
 LOGFILE=$DEST/logs/stack.sh.log
 VERBOSE=True
-OFFLINE=True
+OFFLINE=False
 LOG_COLOR=False
 SCREEN_LOGDIR=$DEST/logs/screen
 
@@ -37,12 +37,12 @@ enable_service q-meta
 enable_service neutron
 
 # Heat - Orchestration Service
-ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
-HEAT_STANDALONE=True
+#ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
+#HEAT_STANDALONE=True
 
 # Ceilometer - Metering Service (metering + alarming)
-ENABLED_SERVICES+=,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api
-ENABLED_SERVICES+=,ceilometer-alarm-notify,ceilometer-alarm-eval
+#ENABLED_SERVICES+=,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api
+#ENABLED_SERVICES+=,ceilometer-alarm-notify,ceilometer-alarm-eval
 
 #Scheduler
 SCHEDULER=nova.scheduler.chance.ChanceScheduler

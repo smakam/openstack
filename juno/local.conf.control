@@ -5,6 +5,7 @@ DEST=/opt/stack
 LOGFILE=$DEST/logs/stack.sh.log
 VERBOSE=True
 SCREEN_LOGDIR=$DEST/logs/screen
+OFFLINE=False
 
 # HOST
 #EDITME
@@ -48,18 +49,18 @@ SERVICE_TOKEN=tokentoken
 
 # Ceilometer
 # Enable the ceilometer metering services
-enable_service ceilometer-acompute ceilometer-acentral ceilometer-anotification ceilometer-collector
+#enable_service ceilometer-acompute ceilometer-acentral ceilometer-anotification ceilometer-collector
 # Enable the ceilometer alarming services
-enable_service ceilometer-alarm-evaluator,ceilometer-alarm-notifier
+#enable_service ceilometer-alarm-evaluator,ceilometer-alarm-notifier
 # Enable the ceilometer api services
-enable_service ceilometer-api
+#enable_service ceilometer-api
 
 # Swift
-enable_service s-proxy s-object s-container s-account
-SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f6
+#enable_service s-proxy s-object s-container s-account
+#SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f6
 
 #Trove
-enable_service trove,tr-api,tr-tmgr,tr-cond
+#enable_service trove,tr-api,tr-tmgr,tr-cond
 
 #scheduler
 enable_service n-sch
